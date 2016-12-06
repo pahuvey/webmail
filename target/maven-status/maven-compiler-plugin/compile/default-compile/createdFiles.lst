@@ -1,0 +1,6 @@
+org\formation\webmail\dao\impl\UserDAOImpl.class
+org\formation\webmail\service\UserService.class
+org\formation\webmail\model\Utilisateur.class
+org\formation\webmail\controller\UserController.class
+org\formation\webmail\dao\UserDAO.class
+org\formation\webmail\service\impl\UserServiceImpl.class
