@@ -1,11 +1,20 @@
 package org.formation.webmail.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -27,7 +36,14 @@ public class Utilisateur {
 	@Column(name="pseudo")
 	private String pseudo;
 	
-
+	
+	
+	
+	@OneToMany(mappedBy="utilisateur", fetch=FetchType.EAGER)
+	@JsonManagedReference
+	private Set<Message> messages;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -52,7 +68,7 @@ public class Utilisateur {
 		this.lastName = lastName;
 	}
 
-
+	
 
 	
 
@@ -72,6 +88,12 @@ public class Utilisateur {
 		this.pseudo = pseudo;
 	}
 
-	
+	public Set<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Set<Message> messages) {
+		this.messages = messages;
+	}
 	
 }

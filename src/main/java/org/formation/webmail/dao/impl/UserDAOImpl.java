@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.formation.webmail.dao.UserDAO;
 import org.formation.webmail.model.Utilisateur;
 
+
 @Component("userDAO")
 @Transactional
 public class UserDAOImpl implements UserDAO {
@@ -42,4 +43,8 @@ public class UserDAOImpl implements UserDAO {
 		entityManager.remove(utilisateur);
 	}
 
+	public Utilisateur getById(int id) {
+		Utilisateur utilisateur = entityManager.find(Utilisateur.class, id);
+		return utilisateur;
+	}
 }

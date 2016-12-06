@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.formation.webmail.model.Utilisateur;
 import org.formation.webmail.service.UserService;
 
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -39,6 +40,15 @@ public class UserController {
 		userService.delete(id);
 	}
 	
-
-
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public Utilisateur utilisateur(@PathVariable("id") Integer id){
+		return userService.getUser(id);
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public void update(@PathVariable("id") Integer id, @RequestBody Utilisateur utilisateur ){
+		utilisateur.setId(id);
+		userService.save(utilisateur);
+		
+	}
 }

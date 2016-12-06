@@ -16,4 +16,6 @@ public interface UserService {
 	
 	public void delete(Integer id);
 	
+	public Utilisateur getUser(int id);
+	
 }
